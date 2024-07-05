@@ -19,6 +19,10 @@ public class Player {
         this.name = name;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
     public void receiveCard(Card card){
         cards.add(card);
         System.out.println(cards);

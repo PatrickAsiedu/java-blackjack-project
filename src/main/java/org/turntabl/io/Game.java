@@ -5,6 +5,7 @@ import java.util.List;
 public class Game {
     private Deck deck;
     private List<Player> players;
+    boolean gameEnded = false;
 
 
     public Game(List<Player> players){
@@ -23,10 +24,43 @@ public class Game {
 
         players.stream().forEach(player -> System.out.println(player.getCardsValue()));
 
+//        while(!gameEnded){
+//            players.stream().forEach(player -> {
+//                playerTurn(player);
+//                if(player.getCardsValue() == 21){
+//                    gameEnded=false;
+//                }
+//            });
+//
+//        }
+
+
+        determineWinner();
 
 
 
+    }
 
+    private void playerTurn(Player player){
+        if(player.getCardsValue() < 17){
+            player.receiveCard(deck.dealCard());
+            System.out.println(player + "hits");
+
+        }
+        else if (player.getCardsValue() >= 17){
+            System.out.println(player + "sticks");
+
+        }
+        else if (player.getCardsValue() > 21){
+            System.out.println(player + "went bust");
+        }
+
+
+
+    }
+
+
+    private void determineWinner(){
 
     }
 }
